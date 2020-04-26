@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - 'stable'
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - 'node_modules'
+
+before_install:
+  - npm i -g npm@latest
+
+before_script:
+  - yarn bootstrap
+
+script:
+  - yarn build
+  - yarn lint
+  - yarn test
+  - yarn doc
