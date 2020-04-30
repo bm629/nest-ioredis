@@ -1,28 +1,40 @@
 {
   "name": "@bm629/nest-ioredis",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Nestjs library for ioredis client",
   "main": "build/lib/index.js",
   "typings": "build/types/index.d.ts",
+  "files": [
+    "/build"
+  ],
+  "keywords": [
+    "nestjs",
+    "nest",
+    "typescript",
+    "ioredis",
+    "redis"
+  ],
   "scripts": {
     "bootstrap": "yarn",
     "clean:build": "rimraf build/",
     "clean": "yarn clean:build && rimraf node_modules",
     "build": "tsc",
     "prettier:lint": "prettier -l *",
-    "prettier:fix": "prettier --write *",
     "lib:lint": "eslint -c .eslintrc.json --ignore-path .eslintignore src/**/*.*",
-    "lib:fix": "yarn run lib:lint -- --fix",
     "lint": "yarn lib:lint && yarn prettier:lint",
-    "lint:fix": "yarn lib:fix && yarn prettier:fix",
+    "prettier:fix": "prettier --write *",
+    "lib:fix": "yarn run lib:lint -- --fix",
+    "fix": "yarn lib:fix && yarn prettier:fix",
     "test": "jest --config jest.config.js",
+    "preversion": "npm-run-all clean bootstrap build lint test",
+    "postversion": "git push && git push --tags",
     "doc": "compodoc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bm629/nest-ioredis.git"
   },
-  "author": "",
+  "author": "Bhushan Modi <bhushan629@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bm629/nest-ioredis/issues"
@@ -152,5 +164,8 @@
     "commitizen": {
       "path": "./node_modules/cz-emoji"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

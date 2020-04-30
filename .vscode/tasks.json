@@ -65,7 +65,7 @@
       "label": "Fix Lint Issues",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "lint:fix"],
+      "args": ["run", "fix"],
       "isBackground": true,
       "group": {
         "kind": "build",
