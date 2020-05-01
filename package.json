@@ -5,7 +5,8 @@
   "main": "build/lib/index.js",
   "typings": "build/types/index.d.ts",
   "files": [
-    "/build"
+    "/build/lib",
+    "/build/types"
   ],
   "keywords": [
     "nestjs",
@@ -26,6 +27,7 @@
     "lib:fix": "yarn run lib:lint -- --fix",
     "fix": "yarn lib:fix && yarn prettier:fix",
     "test": "jest --config jest.config.js",
+    "coverage": "cat ./build/coverage/lcov.info | coveralls",
     "preversion": "npm-run-all clean bootstrap build lint test",
     "postversion": "git push && git push --tags",
     "doc": "compodoc"
@@ -35,7 +37,7 @@
     "url": "git+https://github.com/bm629/nest-ioredis.git"
   },
   "author": "Bhushan Modi <bhushan629@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bm629/nest-ioredis/issues"
   },
@@ -49,6 +51,7 @@
     "@nestjs/common": "^7.0.9",
     "@nestjs/core": "^7.0.9",
     "@nestjs/testing": "^7.0.9",
+    "coveralls": "^3.1.0",
     "ioredis": "^4.16.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5"

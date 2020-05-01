@@ -17,7 +17,8 @@ script:
   - yarn build
   - yarn lint
   - yarn test
-  - yarn doc
+
+after_success: yarn coverage
 
 deploy:
   on:
